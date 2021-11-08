@@ -14,14 +14,37 @@
                 <TextBlock x:Name="P1Title" HorizontalAlignment="Left" Margin="50,15,0,0" Text="Player 1:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
                 <PersonPicture HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="35"/>
                 <Button x:Name="P1DrawCard" Content="Draw Card" Margin="50,63,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="P1DrawCard_Click"/>
+                <TextBlock x:Name="P1StatsText" HorizontalAlignment="Left" Margin="50,118,0,0" Text="Stats:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+                <TextBlock x:Name="P1CardsCount" HorizontalAlignment="Left" Margin="50,148,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="P1RoundsCount" HorizontalAlignment="Left" Margin="50,178,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+
 
             </Grid>
 
-            
+
             <Grid x:Name="P2">
                 <TextBlock x:Name="P2Title" HorizontalAlignment="Left" Margin="400,15,0,0" Text="Player 2:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
                 <PersonPicture HorizontalAlignment="Left" Margin="360,10,0,0" VerticalAlignment="Top" Height="35" Width="35"/>
                 <Button x:Name="P2DrawCard" Content="Draw Card" Margin="400,63,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="P2DrawCard_Click"/>
+                <TextBlock x:Name="P2StatsText" HorizontalAlignment="Left" Margin="400,118,0,0" Text="Stats:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+                <TextBlock x:Name="P2CardsCount" HorizontalAlignment="Left" Margin="400,148,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="P2RoundsCount" HorizontalAlignment="Left" Margin="400,178,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+
+            </Grid>
+
+            <Grid x:Name="General">
+                <TextBlock x:Name="GeneralCardsCount" HorizontalAlignment="Left" Margin="150,65,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
+                <TextBlock x:Name="GeneralRoundsCount" HorizontalAlignment="Left" Margin="150,90,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
+                <TextBlock x:Name="DrawnCardsHeader" HorizontalAlignment="Left" Margin="150,118,0,0" Text="Drawn cards for this round:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+
+                <TextBlock x:Name="P1DrawnHeader" HorizontalAlignment="Left" Margin="205,148,0,0" Text="Player 1: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="P2DrawnHeader" HorizontalAlignment="Left" Margin="205,178,0,0" Text="Player 2: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+
+                <TextBlock x:Name="P1Drawn" HorizontalAlignment="Left" Margin="265,148,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="P2Drawn" HorizontalAlignment="Left" Margin="265,178,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+
+                <TextBlock x:Name="RoundWinnerHeader" HorizontalAlignment="Left" Margin="150,208,0,0" Text="Round winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+                <TextBlock x:Name="RoundWinner" HorizontalAlignment="Left" Margin="250,208,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
 
             </Grid>
 

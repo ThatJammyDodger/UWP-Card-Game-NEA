@@ -41,7 +41,7 @@
             <Grid x:Name="Errors">
                 <TextBlock x:Name="P1Error" HorizontalAlignment="Left" Margin="104,138,0,0" Text="Login unsuccessful. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
                 <TextBlock x:Name="P2Error" HorizontalAlignment="Left" Margin="104,318,0,0" Text="Login unsuccessful. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
-                <TextBlock x:Name="DisplayError" HorizontalAlignment="Left" Margin="104,498,0,0" Text="That went wrong. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
+                <TextBlock x:Name="DisplayError" HorizontalAlignment="Left" Margin="104,498,0,0" Text="Error. They must not be the same, blank, or longer than 8 characters." TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
             </Grid>
             <TextBlock x:Name="SuccessMsg" HorizontalAlignment="Left" Margin="105,494,0,0" Text="Login Successful!" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF13A103" Height="30" TextAlignment="Center"/>
 

@@ -17,6 +17,8 @@ namespace Programming_Project
         public static List<string> Player2Cards = new List<string>();
         public static List<string> Deck = new List<string>();
 
+        
+
         //METHODS
         //we have .setDeck, .shuffleDeck, .calculateWinner, .drawCard, .findCardNumber, .findCardColour, .getFinalWinner, .giveCards
 
@@ -42,6 +44,14 @@ namespace Programming_Project
                 Deck[i] = Deck[randomIndex];
                 Deck[randomIndex] = temp;
             }
+        }
+
+        static public void resetAll()
+        {
+            Player1Cards.Clear();
+            Player2Cards.Clear();
+            setDeck();
+            shuffleDeck();
         }
 
         // red beats black
@@ -98,7 +108,7 @@ namespace Programming_Project
             return drawnCard;
         }
 
-        static int findCardNumber(string card)
+        public static int findCardNumber(string card)
         {
             int spaceindex = card.IndexOf(" ");
             int returnn;
@@ -112,7 +122,7 @@ namespace Programming_Project
             }
         }
 
-        static string findCardColour(string card)
+        public static string findCardColour(string card)
         {
             int spaceindex = card.IndexOf(" ");
             return card.Substring(spaceindex + 1, card.Length - 1 - spaceindex);

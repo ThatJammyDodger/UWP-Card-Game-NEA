@@ -103,7 +103,7 @@ namespace Programming_Project.Views
             P1Display.IsEnabled = false;
             P2Display.IsEnabled = false;
 
-            if (P1Display.Text == "" || P2Display.Text == ""|| P1Display.Text== P2Display.Text)
+            if (P1Display.Text == "" || P2Display.Text == ""|| P1Display.Text== P2Display.Text || P1Display.Text.Length>8 || P2Display.Text.Length>8)
             {
                 DisplayError.Visibility = Visibility.Visible;
                 DisplaySubmit.IsEnabled = true;
