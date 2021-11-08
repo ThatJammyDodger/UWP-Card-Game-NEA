@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Programming_Project.Views.SigninPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+
+            <Grid x:Name="Player1">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Player 1:" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="120" FontWeight="Bold" FontSize="18"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,45,0,0" Text="Username:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="P1Username" HorizontalAlignment="Left" Margin="95,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
+                <PasswordBox x:Name="P1Password" HorizontalAlignment="Left" Margin="95,83,0,0" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,90,0,0" Text="Password:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="P1Submit" Content="Submit" Margin="10,132,0,0" VerticalAlignment="Top" Width="84" Click="P1Submit_Click"/>
+            </Grid>
+
+            <Grid x:Name="Player2">
+                <TextBlock HorizontalAlignment="Left" Margin="10,190,0,0" Text="Player 2:" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="120" FontWeight="Bold" FontSize="18"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,225,0,0" Text="Username:" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.118"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,270,0,0" Text="Password:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="P2Username" HorizontalAlignment="Left" Margin="94,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
+                <PasswordBox x:Name="P2Password" HorizontalAlignment="Left" Margin="95,263,0,0" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
+                <Button x:Name="P2Submit" Content="Submit" Margin="10,312,0,0" VerticalAlignment="Top" Width="84" Click="P2Submit_Click"/>
+
+            </Grid>
+
+            <Grid x:Name="Display">
+                <TextBlock HorizontalAlignment="Left" Margin="10,370,0,0" Text="Display Names:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,405,0,0" Text="Player 1:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,450,0,0" Text="Player 2" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="P1Display" HorizontalAlignment="Left" Margin="95,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
+                <TextBox x:Name="P2Display" HorizontalAlignment="Left" Margin="95,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
+                <Button x:Name="DisplaySubmit" Content="Submit" Margin="10,492,0,0" VerticalAlignment="Top" Width="84" Click="DisplaySubmit_Click"/>
+            </Grid>
+
+            <Grid x:Name="Errors">
+                <TextBlock x:Name="P1Error" HorizontalAlignment="Left" Margin="104,138,0,0" Text="Login unsuccessful. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
+                <TextBlock x:Name="P2Error" HorizontalAlignment="Left" Margin="104,318,0,0" Text="Login unsuccessful. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
+                <TextBlock x:Name="DisplayError" HorizontalAlignment="Left" Margin="104,498,0,0" Text="That went wrong. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
+            </Grid>
+            <TextBlock x:Name="SuccessMsg" HorizontalAlignment="Left" Margin="105,494,0,0" Text="Login Successful!" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF13A103" Height="30" TextAlignment="Center"/>
+
+        </Grid>
+    </Grid>
+</Page>
