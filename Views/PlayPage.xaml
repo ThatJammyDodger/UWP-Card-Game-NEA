@@ -7,7 +7,7 @@
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid xmlns:interactivity="using:Microsoft.Xaml.Interactivity"  xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+        <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
 
             <Grid x:Name="P1">
@@ -32,7 +32,7 @@
 
             </Grid>
 
-            <Grid x:Name="General">
+            <Grid x:Name="General" Margin="30,0,0,0">
                 <TextBlock x:Name="GeneralCardsCount" HorizontalAlignment="Left" Margin="150,65,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
                 <TextBlock x:Name="GeneralRoundsCount" HorizontalAlignment="Left" Margin="150,90,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
                 <TextBlock x:Name="DrawnCardsHeader" HorizontalAlignment="Left" Margin="150,118,0,0" Text="Drawn cards for this round:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
@@ -46,7 +46,16 @@
                 <TextBlock x:Name="RoundWinnerHeader" HorizontalAlignment="Left" Margin="150,208,0,0" Text="Round winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
                 <TextBlock x:Name="RoundWinner" HorizontalAlignment="Left" Margin="250,208,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
 
+                <Grid x:Name="GameOverMenu">
+                    <TextBlock x:Name="GameWinner" HorizontalAlignment="Left" Margin="20,255,0,0" Text="Game Winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <Button x:Name="PlayAgain" Content="Play Again" Margin="20,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Click="PlayAgain_Click"/>
+
+                </Grid>
+
+
             </Grid>
+
+
 
 
 

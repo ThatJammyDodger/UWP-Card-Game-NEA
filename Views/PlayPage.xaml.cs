@@ -12,13 +12,6 @@ namespace Programming_Project.Views
         {
             InitializeComponent();
 
-            cards.setDeck();
-            cards.shuffleDeck();
-            updateStats();
-
-            P1DrawCard.IsEnabled = true;
-            P2DrawCard.IsEnabled = false;
-
             if (!login.PlayersLoggedIn)
             {
                 DisableContent.Visibility = Visibility.Visible;
@@ -38,6 +31,32 @@ namespace Programming_Project.Views
 
                 P1DrawnHeader.Text = $"{login.displayNames[0]}:";
                 P2DrawnHeader.Text = $"{login.displayNames[1]}:";
+
+                updateStats();
+                if (!cards.GameInProgress)
+                {
+                    cards.reset();
+                    updateStats();
+                    GameOverMenu.Visibility = Visibility.Collapsed;
+                    cards.GameInProgress = true;
+                    P1DrawCard.IsEnabled = true;
+                    P2DrawCard.IsEnabled = false;
+                } else if (cards.GameInProgress)
+                {
+                    GameOverMenu.Visibility = Visibility.Collapsed;
+                    if (cards.PlayerTurn == 1)
+                    {
+                        P1DrawCard.IsEnabled = true;
+                        P2DrawCard.IsEnabled = false;
+                        P1Drawn.Text = "";
+                        P2Drawn.Text = "";
+                    } else if (cards.PlayerTurn == 2)
+                    {
+                        P1DrawCard.IsEnabled = false;
+                        P2DrawCard.IsEnabled = true;
+                        P2Drawn.Text = "";
+                    }
+                }
             }
         }
 
@@ -56,26 +75,34 @@ namespace Programming_Project.Views
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        string player1card;
-        string player2card;
+        
 
         private void P1DrawCard_Click(object sender, RoutedEventArgs e)
         {
             P1Drawn.Text = "";
             P2Drawn.Text = "";
+            RoundWinner.Text = "";
 
             P1DrawCard.IsEnabled = false;
             P2DrawCard.IsEnabled = true;
 
-            player1card = cards.drawCard();
+            cards.player1card = cards.drawCard();
 
-            P1Drawn.Text = player1card;
-
+            cards.PlayerTurn = 2;
             updateStats();
+
+            P2Drawn.Text = "";
         }
 
         private void P2DrawCard_Click(object sender, RoutedEventArgs e)
         {
+            cards.player2card = cards.drawCard();
+
+            int winner = cards.calculateWinner(cards.player1card, cards.player2card);
+
+            RoundWinner.Text = $"{login.displayNames[winner - 1]}";
+            cards.giveCards(winner, cards.player1card, cards.player2card);
+
             if (cards.Deck.Count <= 1)
             {
                 P1DrawCard.IsEnabled = false;
@@ -86,19 +113,14 @@ namespace Programming_Project.Views
                 P2DrawCard.IsEnabled = false;
                 P1DrawCard.IsEnabled = true;
             }
-
-            player2card = cards.drawCard();
-
-            P2Drawn.Text = player2card;
-
-            int winner = cards.calculateWinner(player1card, player2card);
-
-            RoundWinner.Text = $"{login.displayNames[winner - 1]}";
-            cards.giveCards(winner, player1card, player2card);
-
-            
-
+            cards.PlayerTurn = 1;
             updateStats();
+            if (cards.Deck.Count == 0)
+            {
+                cards.GameInProgress = false;
+                GameOverMenu.Visibility = Visibility.Visible;
+                GameWinner.Text = $"Winner: {login.displayNames[cards.getFinalWinner()]}";
+            }
         }
 
         void updateStats()
@@ -112,14 +134,32 @@ namespace Programming_Project.Views
             GeneralCardsCount.Text = $"There are {cards.Deck.Count} cards left";
             GeneralRoundsCount.Text = $"There are {cards.Deck.Count / 2} rounds left";
 
-            //if (cards.Player1Cards.Count > 0)
+            P1Drawn.Text = cards.player1card;
+            P2Drawn.Text = cards.player2card;
+
+            //if (cards.cards.player1cards.Count > 0)
             //{
-            //    P1Drawn.Text = $"The {cards.findCardColour(cards.Player1Cards[cards.Player1Cards.Count - 1])} {cards.findCardNumber(cards.Player1Cards[cards.Player1Cards.Count - 1])}";
+            //    P1Drawn.Text = $"The {cards.findCardColour(cards.cards.player1cards[cards.cards.player1cards.Count - 1])} {cards.findCardNumber(cards.cards.player1cards[cards.cards.player1cards.Count - 1])}";
             //}
-            //if (cards.Player2Cards.Count > 0)
+            //if (cards.cards.player2cards.Count > 0)
             //{
-            //    P1Drawn.Text = $"The {cards.findCardColour(cards.Player2Cards[cards.Player2Cards.Count - 1])} {cards.findCardNumber(cards.Player2Cards[cards.Player2Cards.Count - 1])}";
+            //    P1Drawn.Text = $"The {cards.findCardColour(cards.cards.player2cards[cards.cards.player2cards.Count - 1])} {cards.findCardNumber(cards.cards.player2cards[cards.cards.player2cards.Count - 1])}";
             //}
+        }
+
+        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        {
+            cards.reset();
+            cards.setDeck();
+            cards.shuffleDeck();
+            updateStats();
+
+            cards.GameInProgress = true;
+            P1DrawCard.IsEnabled = true;
+            P2DrawCard.IsEnabled = false;
+            RoundWinner.Text = "";
+
+            GameOverMenu.Visibility = Visibility.Collapsed;
         }
     }
 }

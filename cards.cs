@@ -10,17 +10,30 @@ namespace Programming_Project
     {
         //PROPERTIES
 
-        public static bool initialSetup = false;
 
         static Random rnd = new Random();
+        public static bool GameInProgress = false;
         public static List<string> Player1Cards = new List<string>();
         public static List<string> Player2Cards = new List<string>();
         public static List<string> Deck = new List<string>();
+        public static int PlayerTurn = 1;
 
-        
+        public static string player1card = "";
+        public static string player2card = "";
 
         //METHODS
-        //we have .setDeck, .shuffleDeck, .calculateWinner, .drawCard, .findCardNumber, .findCardColour, .getFinalWinner, .giveCards
+        //we have .reset .setDeck, .shuffleDeck, .calculateWinner, .drawCard, .findCardNumber, .findCardColour, .getFinalWinner, .giveCards
+
+        static public void reset()
+        {
+            setDeck();
+            shuffleDeck();
+            Player1Cards.Clear();
+            Player2Cards.Clear();
+            player1card = "";
+            player2card = "";
+            PlayerTurn = 1;
+        }
 
         static public void setDeck()
         {
@@ -46,13 +59,7 @@ namespace Programming_Project
             }
         }
 
-        static public void resetAll()
-        {
-            Player1Cards.Clear();
-            Player2Cards.Clear();
-            setDeck();
-            shuffleDeck();
-        }
+        
 
         // red beats black
         // yellow beats red
@@ -132,11 +139,11 @@ namespace Programming_Project
         {
             if (Player1Cards.Count > Player2Cards.Count)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                return 2;
+                return 1;
             }
         }
 
