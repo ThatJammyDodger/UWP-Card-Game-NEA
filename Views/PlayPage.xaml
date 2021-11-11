@@ -49,6 +49,7 @@
                 <Grid x:Name="GameOverMenu">
                     <TextBlock x:Name="GameWinner" HorizontalAlignment="Left" Margin="20,255,0,0" Text="Game Winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
                     <Button x:Name="PlayAgain" Content="Play Again" Margin="20,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Click="PlayAgain_Click"/>
+                    <TextBlock x:Name="GameWinnerCards" HorizontalAlignment="Left" Margin="113,286,0,0" Text="Game Winner's Cards:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Width="400" Height="400"/>
 
                 </Grid>
 

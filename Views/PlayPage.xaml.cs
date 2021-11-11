@@ -119,7 +119,15 @@ namespace Programming_Project.Views
             {
                 cards.GameInProgress = false;
                 GameOverMenu.Visibility = Visibility.Visible;
-                GameWinner.Text = $"Winner: {login.displayNames[cards.getFinalWinner()]}";
+                int FinalWinner = cards.getFinalWinner();
+                GameWinner.Text = $"Winner: {login.displayNames[FinalWinner]}";
+                files.AddToFile(FinalWinner, cards.getCards(FinalWinner).Count);
+                GameWinnerCards.Text = $"{login.displayNames[FinalWinner]}'s Cards:\t";
+                foreach (var x in cards.getCards(FinalWinner))
+                {
+                    GameWinnerCards.Text += $"{x}\t";
+                }
+                    
             }
         }
 

@@ -29,7 +29,7 @@
             -->
             <winui:NavigationViewItem x:Uid="Shell_Signin" Icon="Permissions" helpers:NavHelper.NavigateTo="views:SigninPage" />
             <winui:NavigationViewItem x:Uid="Shell_Play" Icon="Play" helpers:NavHelper.NavigateTo="views:PlayPage" />
-            <!--<winui:NavigationViewItem x:Uid="Shell_Results" Icon="ZeroBars" helpers:NavHelper.NavigateTo="views:ResultsPage" />-->
+            <winui:NavigationViewItem x:Uid="Shell_Results" Icon="ZeroBars" helpers:NavHelper.NavigateTo="views:ResultsPage" />
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

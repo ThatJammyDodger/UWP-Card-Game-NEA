@@ -59,7 +59,16 @@ namespace Programming_Project
             }
         }
 
-        
+        static public List<string> getCards(int player)
+        {
+            if (player == 0)
+            {
+                return Player1Cards;
+            } else
+            {
+                return Player2Cards;
+            }
+        }
 
         // red beats black
         // yellow beats red

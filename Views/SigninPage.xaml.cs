@@ -12,6 +12,7 @@ namespace Programming_Project.Views
         {
             InitializeComponent();
 
+
             P1Error.Visibility = Visibility.Collapsed;
             P2Error.Visibility = Visibility.Collapsed;
             DisplayError.Visibility = Visibility.Collapsed;
