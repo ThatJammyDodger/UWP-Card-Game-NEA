@@ -62,6 +62,7 @@
                     Style="{ThemeResource BodyTextBlockStyle}" />
 
                 <HyperlinkButton x:Uid="Settings_PrivacyTermsLink" Margin="{StaticResource XSmallTopMargin}" />
+                <HyperlinkButton x:Uid="Settings_SourceCodeLink" Margin="{StaticResource XSmallTopMargin}" />
             </StackPanel>
         </StackPanel>
     </Grid>

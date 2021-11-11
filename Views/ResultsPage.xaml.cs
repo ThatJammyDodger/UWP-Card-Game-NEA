@@ -41,12 +41,14 @@ namespace Programming_Project.Views
 
                 files.SortList(ref scores, ref names);
 
-                
-                for (int i = 0; i < 5; i++)
+                if (names.Count > 0)
                 {
-                    more += $"{i + 1}) {names[i]} with a score of {scores[i]}.\n";
+                    for (int i = 0; i < 5; i++)
+                    {
+                        more += $"{i + 1}) {names[i]} with a score of {scores[i]}.\n";
+                    }
+                    Test.Text = more;
                 }
-                Test.Text = more;
             }
 
             

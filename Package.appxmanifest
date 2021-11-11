@@ -10,7 +10,7 @@
   <Identity
     Name="32215JayAmbadkar.LuckyCardGame"
     Publisher="CN=46DFE871-C408-4D07-9989-4B9FDCB1B79F"
-    Version="1.0.0.0" />
+    Version="1.0.3.0" />
 
   <mp:PhoneIdentity PhoneProductId="fab132a5-771c-4469-aefb-808e3c9c436b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

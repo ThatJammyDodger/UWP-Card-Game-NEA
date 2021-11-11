@@ -173,4 +173,10 @@
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
   </data>
+  <data name="Settings_SourceCodeLink.Content" xml:space="preserve">
+    <value>Source Code</value>
+  </data>
+  <data name="Settings_SourceCodeLink.NavigateUri" xml:space="preserve">
+    <value>https://github.com/ThatJammyDodger/UWP-Card-Game-NEA</value>
+  </data>
 </root>
