@@ -47,16 +47,22 @@
                 <TextBlock x:Name="RoundWinner" HorizontalAlignment="Left" Margin="250,208,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
 
                 <Grid x:Name="GameOverMenu">
-                    <TextBlock x:Name="GameWinner" HorizontalAlignment="Left" Margin="20,255,0,0" Text="Game Winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                    <Button x:Name="PlayAgain" Content="Play Again" Margin="20,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Click="PlayAgain_Click"/>
-                    <TextBlock x:Name="GameWinnerCards" HorizontalAlignment="Left" Margin="113,286,0,0" Text="Game Winner's Cards:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Width="400" Height="400"/>
-
+                    <TextBlock x:Name="GameWinner" HorizontalAlignment="Left" Margin="525,78,0,0" Text="Game Winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="24"/>
+                    <Button x:Name="PlayAgain" Content="Play Again" Margin="525,101,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Click="PlayAgain_Click"/>
+                    <TextBlock x:Name="GameWinnerCardsHeader" HorizontalAlignment="Left" Margin="525,135,0,0" Text="Game Winner's Cards:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Width="200" Height="24"/>
+                    <TextBlock x:Name="GameWinnerCards" HorizontalAlignment="Left" Margin="525,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Width="200" Height="506"/>
                 </Grid>
-
-
             </Grid>
 
 
+            <Grid x:Name="CardGraphics">
+                <Image x:Name="P1CardImage" HorizontalAlignment="Left" Height="172" Margin="40,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill"/>
+                <Image x:Name="P2CardImage" HorizontalAlignment="Left" Height="172" Margin="390,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill"/>
+                
+                <TextBlock x:Name="P1CardImageNumber" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100"/>
+                <TextBlock x:Name="P2CardImageNumber" HorizontalAlignment="Left" Margin="390,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100"/>
+                <Button Content="Button" Margin="145,323,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            </Grid>
 
 
 

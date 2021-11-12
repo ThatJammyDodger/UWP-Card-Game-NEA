@@ -16,8 +16,7 @@ namespace Programming_Project.Views
             if (files.FirstTime)
             {
                 files.InitiateFile();
-
-                string File = files.GetFileValue();
+                _ = files.GetFileValue();
                 files.FirstTime = false;
             }
             else
@@ -26,14 +25,13 @@ namespace Programming_Project.Views
 
                 List<string> names = new List<string>();
                 List<int> scores = new List<int>();
-                var lines = File.Split("\n");
+                string[] lines = File.Split("\n");
                 foreach (var x in lines)
                 {
                     if (x.IndexOf(",") != -1)
                     {
-                        int value = 0;
                         var midline = x.Split(",");
-                        int.TryParse(midline[1], out value);
+                        int.TryParse(midline[1], out int value);
                         names.Add(midline[0]);
                         scores.Add(value);
                     }
@@ -51,13 +49,13 @@ namespace Programming_Project.Views
                 }
             }
 
-            void updateText(string string1, ref string string2)
+            /*void updateText(string string1, ref string string2)
             {
                 while (true)
                 {
                     string2 = string1;
                 }
-            }
+            }*/
 
             //using (var reader = new StreamWriter(@"winners.csv"))
             //{

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Programming_Project.Views
 {
@@ -14,10 +15,11 @@ namespace Programming_Project.Views
 
             if (!login.PlayersLoggedIn)
             {
-                DisableContent.Visibility = Visibility.Visible;
+                //DisableContent.Visibility = Visibility.Visible;
                 P1.Visibility = Visibility.Collapsed;
                 P2.Visibility = Visibility.Collapsed;
                 General.Visibility = Visibility.Collapsed;
+                //CardGraphics.Visibility = Visibility.Collapsed;
             }
             else if (login.PlayersLoggedIn)
             {
@@ -25,6 +27,7 @@ namespace Programming_Project.Views
                 P1.Visibility = Visibility.Visible;
                 P2.Visibility = Visibility.Visible;
                 General.Visibility = Visibility.Visible;
+                CardGraphics.Visibility = Visibility.Visible;
 
                 P1Title.Text = login.displayNames[0];
                 P2Title.Text = login.displayNames[1];
@@ -32,11 +35,11 @@ namespace Programming_Project.Views
                 P1DrawnHeader.Text = $"{login.displayNames[0]}:";
                 P2DrawnHeader.Text = $"{login.displayNames[1]}:";
 
-                updateStats();
+                UpdateStats();
                 if (!cards.GameInProgress)
                 {
                     cards.reset();
-                    updateStats();
+                    UpdateStats();
                     GameOverMenu.Visibility = Visibility.Collapsed;
                     cards.GameInProgress = true;
                     P1DrawCard.IsEnabled = true;
@@ -89,7 +92,7 @@ namespace Programming_Project.Views
             cards.player1card = cards.drawCard();
 
             cards.PlayerTurn = 2;
-            updateStats();
+            UpdateStats();
 
             P2Drawn.Text = "";
         }
@@ -114,7 +117,7 @@ namespace Programming_Project.Views
                 P1DrawCard.IsEnabled = true;
             }
             cards.PlayerTurn = 1;
-            updateStats();
+            UpdateStats();
             if (cards.Deck.Count == 0)
             {
                 cards.GameInProgress = false;
@@ -122,7 +125,8 @@ namespace Programming_Project.Views
                 int FinalWinner = cards.getFinalWinner();
                 GameWinner.Text = $"Winner: {login.displayNames[FinalWinner]}";
                 files.AddToFile(FinalWinner, cards.getCards(FinalWinner).Count);
-                GameWinnerCards.Text = $"{login.displayNames[FinalWinner]}'s Cards:\t";
+                GameWinnerCardsHeader.Text = $"{login.displayNames[FinalWinner]}'s Cards:\t";
+                GameWinnerCards.Text = "";
                 foreach (var x in cards.getCards(FinalWinner))
                 {
                     GameWinnerCards.Text += $"{x}\t";
@@ -131,7 +135,7 @@ namespace Programming_Project.Views
             }
         }
 
-        void updateStats()
+        void UpdateStats()
         {
             P1CardsCount.Text = $"Has {cards.Player1Cards.Count}/30 cards";
             P1RoundsCount.Text = $"Has won {cards.Player1Cards.Count / 2}/15 rounds";
@@ -160,7 +164,7 @@ namespace Programming_Project.Views
             cards.reset();
             cards.setDeck();
             cards.shuffleDeck();
-            updateStats();
+            UpdateStats();
 
             cards.GameInProgress = true;
             P1DrawCard.IsEnabled = true;
@@ -168,6 +172,71 @@ namespace Programming_Project.Views
             RoundWinner.Text = "";
 
             GameOverMenu.Visibility = Visibility.Collapsed;
+        }
+
+        void ClearImg1()
+        {
+            //string NullImgSource = "ms-appx:///Images/null.png";
+            //BitmapImage bitmapImage = new BitmapImage();
+            //Uri uri = new Uri(NullImgSource);
+            //bitmapImage.UriSource = uri;
+            //P1CardImage.Source = bitmapImage;
+
+            P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
+
+            P1CardImageNumber.Text = "";
+        }
+
+        void ClearImg2()
+        {
+            //string NullImgSource = "ms-appx:///Images/null.png";
+            //BitmapImage bitmapImage = new BitmapImage();
+            //Uri uri = new Uri(NullImgSource);
+            //bitmapImage.UriSource = uri;
+            //P1CardImage.Source = bitmapImage;
+
+            P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
+
+            P2CardImageNumber.Text = "";
+        }
+
+        void SetImg1(int number, string colour)
+        {
+            if (colour == "Black")
+            {
+                P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Grey-Background.png"));
+            } else if (colour == "Yellow")
+            {
+                P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Yellow-Background.png"));
+            } else if (colour == "Red")
+            {
+                P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Red-Background.png"));
+            }
+            P1CardImageNumber.Text = number.ToString();
+        }
+
+        void SetImg2(int number, string colour)
+        {
+            if (colour == "Black")
+            {
+                P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Grey-Background.png"));
+            }
+            else if (colour == "Yellow")
+            {
+                P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Yellow-Background.png"));
+            }
+            else if (colour == "Red")
+            {
+                P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Red-Background.png"));
+            }
+            P2CardImageNumber.Text = number.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //ClearImg1();
+            SetImg1(7, "Red");
+            SetImg2(2, "Yellow"); //for glide in animation, will gilde in from bottom and opacity slowly goes from 0 to 100%
         }
     }
 }
