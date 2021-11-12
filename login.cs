@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming_Project
-{
-    static class login
-    {
+namespace Programming_Project {
+    static class login {
         //FIELDS
         static public bool PlayersLoggedIn = false;
         static string[] usernames = new string[] { "player1", "player2", "player3" };
@@ -15,21 +13,14 @@ namespace Programming_Project
         static public string[] displayNames = new string[2];
 
         //METHODS
-        static public bool auth(string enteredUsername, string enteredPassword)
-        {
+        static public bool auth(string enteredUsername, string enteredPassword) {
             int usernamepos = Array.IndexOf(usernames, enteredUsername);
-            if (usernamepos == -1)
-            {
+            if (usernamepos == -1) {
                 return false;
-            }
-            else
-            {
-                if (enteredPassword == passwords[usernamepos])
-                {
+            } else {
+                if (enteredPassword == passwords[usernamepos]) {
                     return true;
-                }
-                else
-                {
+                } else {
                     return false;
                 }
             }
