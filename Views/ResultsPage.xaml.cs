@@ -12,7 +12,7 @@ namespace Programming_Project.Views
         public ResultsPage()
         {
             InitializeComponent();
-            string more = "";
+            string output = "";
             if (files.FirstTime)
             {
                 files.InitiateFile();
@@ -45,13 +45,19 @@ namespace Programming_Project.Views
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        more += $"{i + 1}) {names[i]} with a score of {scores[i]}.\n";
+                        output += $"{i + 1}) {names[i]} with a score of {scores[i]}.\n";
                     }
-                    Test.Text = more;
+                    Test.Text = output;
                 }
             }
 
-            
+            void updateText(string string1, ref string string2)
+            {
+                while (true)
+                {
+                    string2 = string1;
+                }
+            }
 
             //using (var reader = new StreamWriter(@"winners.csv"))
             //{
