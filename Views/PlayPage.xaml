@@ -6,6 +6,64 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="P1CardArriveAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImage" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImageNumber" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImageNumber" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="P2CardArriveAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImageNumber" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImageNumber" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImage" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="P1CardLeaveAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardGraphics" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardGraphics" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="P2CardLeaveAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardGraphics" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-200"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardGraphics" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
@@ -55,13 +113,36 @@
             </Grid>
 
 
-            <Grid x:Name="CardGraphics">
-                <Image x:Name="P1CardImage" HorizontalAlignment="Left" Height="172" Margin="40,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill"/>
-                <Image x:Name="P2CardImage" HorizontalAlignment="Left" Height="172" Margin="390,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill"/>
-                
-                <TextBlock x:Name="P1CardImageNumber" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100"/>
-                <TextBlock x:Name="P2CardImageNumber" HorizontalAlignment="Left" Margin="390,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100"/>
-                <Button Content="Button" Margin="145,323,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <Grid x:Name="P1CardGraphics" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                <Image x:Name="P1CardImage" HorizontalAlignment="Left" Height="172" Margin="40,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <CompositeTransform/>
+                    </Image.RenderTransform>
+                </Image>
+                <TextBlock x:Name="P1CardImageNumber" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+
+            <Grid x:Name="P2CardGraphics" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                <Image x:Name="P2CardImage" HorizontalAlignment="Left" Height="172" Margin="390,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <CompositeTransform/>
+                    </Image.RenderTransform>
+                </Image>
+                <TextBlock x:Name="P2CardImageNumber" HorizontalAlignment="Left" Margin="390,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
             </Grid>
 
 
@@ -74,7 +155,6 @@
                 <TextBlock x:Name="NotLoggedIn" HorizontalAlignment="Left" Margin="20,20,0,0" Text="You have not logged in. Please log in first." TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" FontSize="18"/>
 
             </Grid>
-
         </Grid>
     </Grid>
 </Page>

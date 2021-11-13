@@ -27,7 +27,9 @@ namespace Programming_Project.Views
                 P1.Visibility = Visibility.Visible;
                 P2.Visibility = Visibility.Visible;
                 General.Visibility = Visibility.Visible;
-                CardGraphics.Visibility = Visibility.Visible;
+
+                P1CardGraphics.Visibility = Visibility.Visible;
+                P2CardGraphics.Visibility = Visibility.Visible;
 
                 P1Title.Text = login.displayNames[0];
                 P2Title.Text = login.displayNames[1];
@@ -174,35 +176,22 @@ namespace Programming_Project.Views
             GameOverMenu.Visibility = Visibility.Collapsed;
         }
 
-        void ClearImg1()
+        
+
+        //string NullImgSource = "ms-appx:///Images/null.png";
+        //BitmapImage bitmapImage = new BitmapImage();
+        //Uri uri = new Uri(NullImgSource);
+        //bitmapImage.UriSource = uri;
+        //P1CardImage.Source = bitmapImage;
+
+        void SetImg1(int number = 0, string colour = null)
         {
-            //string NullImgSource = "ms-appx:///Images/null.png";
-            //BitmapImage bitmapImage = new BitmapImage();
-            //Uri uri = new Uri(NullImgSource);
-            //bitmapImage.UriSource = uri;
-            //P1CardImage.Source = bitmapImage;
-
-            P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
-
-            P1CardImageNumber.Text = "";
-        }
-
-        void ClearImg2()
-        {
-            //string NullImgSource = "ms-appx:///Images/null.png";
-            //BitmapImage bitmapImage = new BitmapImage();
-            //Uri uri = new Uri(NullImgSource);
-            //bitmapImage.UriSource = uri;
-            //P1CardImage.Source = bitmapImage;
-
-            P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
-
-            P2CardImageNumber.Text = "";
-        }
-
-        void SetImg1(int number, string colour)
-        {
-            if (colour == "Black")
+            if (colour == null)
+            {
+                P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
+                P1CardImageNumber.Text = "";
+                return;
+            } else if (colour == "Black")
             {
                 P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Grey-Background.png"));
             } else if (colour == "Yellow")
@@ -215,9 +204,14 @@ namespace Programming_Project.Views
             P1CardImageNumber.Text = number.ToString();
         }
 
-        void SetImg2(int number, string colour)
+        void SetImg2(int number = 0, string colour = null)
         {
-            if (colour == "Black")
+            if (colour == null)
+            {
+                P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
+                P1CardImageNumber.Text = "";
+                return;
+            } else if (colour == "Black")
             {
                 P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/Grey-Background.png"));
             }
@@ -232,11 +226,26 @@ namespace Programming_Project.Views
             P2CardImageNumber.Text = number.ToString();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void AppearImg1(int number, string colour)
         {
-            //ClearImg1();
-            SetImg1(7, "Red");
-            SetImg2(2, "Yellow"); //for glide in animation, will gilde in from bottom and opacity slowly goes from 0 to 100%
+            SetImg1(number, colour);
+            P1CardArriveAnimation.Begin();
         }
+        void DisappearImg1()
+        {
+            P1CardLeaveAnimation.Begin();
+        }
+
+        void AppearImg2(int number, string colour)
+        {
+            SetImg2(number, colour);
+            P2CardArriveAnimation.Begin();
+        }
+        void DisappearImg2()
+        {
+            P2CardLeaveAnimation.Begin();
+        }
+
+        
     }
 }
