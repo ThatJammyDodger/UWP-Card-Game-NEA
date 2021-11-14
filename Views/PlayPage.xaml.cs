@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
-using System.Threading;
+
 
 namespace Programming_Project.Views
 {
@@ -286,17 +286,7 @@ namespace Programming_Project.Views
             //P2CardGraphics.Opacity = 1;
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    AppearImg2(7, "Red");
-        //    DisappearImg1();
-        //}
-
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    AppearImg1(2, "Yellow");
-        //    DisappearImg2();
-        //}
+        
 
         void DoArrowToRight()
         {

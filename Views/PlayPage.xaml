@@ -61,14 +61,14 @@
         </Storyboard>
         <Storyboard x:Name="LeftArrow">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="76"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-76"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="76"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2500000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-76"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2500000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
@@ -76,7 +76,7 @@
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
 
-            <Grid x:Name="P1CardGraphics" RenderTransformOrigin="0.5,0.5">
+            <Grid x:Name="P1CardGraphics" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
                 <Grid.RenderTransform>
                     <CompositeTransform/>
                 </Grid.RenderTransform>
@@ -92,7 +92,7 @@
                 </TextBlock>
             </Grid>
 
-            <Grid x:Name="P2CardGraphics" RenderTransformOrigin="0.5,0.5">
+            <Grid x:Name="P2CardGraphics" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
                 <Grid.RenderTransform>
                     <CompositeTransform/>
                 </Grid.RenderTransform>
@@ -168,7 +168,6 @@
             <Grid x:Name="DisableContent" Visibility="Collapsed">
                 <Rectangle x:Name="BlockContent" HorizontalAlignment="Left" Height="2160" Stroke="Black" VerticalAlignment="Top" Width="3840" Fill="Black" Opacity="0.1"/>
                 <TextBlock x:Name="NotLoggedIn" HorizontalAlignment="Left" Margin="20,20,0,0" Text="You have not logged in. Please log in first." TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" FontSize="18"/>
-
             </Grid>
         </Grid>
     </Grid>
