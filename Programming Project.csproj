@@ -276,8 +276,10 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Images\Grey-Background.png" />
+    <Content Include="Images\LeftArrow.png" />
     <Content Include="Images\null.png" />
     <Content Include="Images\Red-Background.png" />
+    <Content Include="Images\RightArrow.png" />
     <Content Include="Images\Yellow-Background.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Threading;
 
 namespace Programming_Project.Views
 {
@@ -12,14 +13,18 @@ namespace Programming_Project.Views
         public PlayPage()
         {
             InitializeComponent();
+            Arrow.Opacity = 0;
 
             if (!login.PlayersLoggedIn)
             {
-                //DisableContent.Visibility = Visibility.Visible;
+                DisableContent.Visibility = Visibility.Visible;
+
                 P1.Visibility = Visibility.Collapsed;
                 P2.Visibility = Visibility.Collapsed;
                 General.Visibility = Visibility.Collapsed;
-                //CardGraphics.Visibility = Visibility.Collapsed;
+
+                P1CardGraphics.Visibility = Visibility.Collapsed;
+                P2CardGraphics.Visibility = Visibility.Collapsed;
             }
             else if (login.PlayersLoggedIn)
             {
@@ -46,6 +51,9 @@ namespace Programming_Project.Views
                     cards.GameInProgress = true;
                     P1DrawCard.IsEnabled = true;
                     P2DrawCard.IsEnabled = false;
+
+                    SetImg1();
+                    SetImg2();
                 } else if (cards.GameInProgress)
                 {
                     GameOverMenu.Visibility = Visibility.Collapsed;
@@ -55,11 +63,15 @@ namespace Programming_Project.Views
                         P2DrawCard.IsEnabled = false;
                         P1Drawn.Text = "";
                         P2Drawn.Text = "";
+                        SetImg1();
+                        SetImg2();
                     } else if (cards.PlayerTurn == 2)
                     {
                         P1DrawCard.IsEnabled = false;
                         P2DrawCard.IsEnabled = true;
                         P2Drawn.Text = "";
+                        SetImg1(cards.findCardNumber(cards.player1card), cards.findCardColour(cards.player1card));
+                        SetImg2();
                     }
                 }
             }
@@ -84,6 +96,9 @@ namespace Programming_Project.Views
 
         private void P1DrawCard_Click(object sender, RoutedEventArgs e)
         {
+            DisappearImg1();
+            DisappearImg2();
+
             P1Drawn.Text = "";
             P2Drawn.Text = "";
             RoundWinner.Text = "";
@@ -92,6 +107,7 @@ namespace Programming_Project.Views
             P2DrawCard.IsEnabled = true;
 
             cards.player1card = cards.drawCard();
+            AppearImg1(cards.findCardNumber(cards.player1card), cards.findCardColour(cards.player1card));
 
             cards.PlayerTurn = 2;
             UpdateStats();
@@ -102,11 +118,20 @@ namespace Programming_Project.Views
         private void P2DrawCard_Click(object sender, RoutedEventArgs e)
         {
             cards.player2card = cards.drawCard();
+            AppearImg2(cards.findCardNumber(cards.player2card), cards.findCardColour(cards.player2card));
 
             int winner = cards.calculateWinner(cards.player1card, cards.player2card);
 
             RoundWinner.Text = $"{login.displayNames[winner - 1]}";
             cards.giveCards(winner, cards.player1card, cards.player2card);
+
+            if (winner == 1)
+            {
+                DoArrowToLeft();
+            } else if (winner == 2)
+            {
+                DoArrowToRight();
+            }
 
             if (cards.Deck.Count <= 1)
             {
@@ -173,6 +198,9 @@ namespace Programming_Project.Views
             P2DrawCard.IsEnabled = false;
             RoundWinner.Text = "";
 
+            DisappearImg1();
+            DisappearImg2();
+
             GameOverMenu.Visibility = Visibility.Collapsed;
         }
 
@@ -208,8 +236,8 @@ namespace Programming_Project.Views
         {
             if (colour == null)
             {
-                P1CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
-                P1CardImageNumber.Text = "";
+                P2CardImage.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
+                P2CardImageNumber.Text = "";
                 return;
             } else if (colour == "Black")
             {
@@ -228,24 +256,57 @@ namespace Programming_Project.Views
 
         void AppearImg1(int number, string colour)
         {
+            P1CardGraphics.Visibility = Visibility.Visible;
             SetImg1(number, colour);
             P1CardArriveAnimation.Begin();
+
+            P1CardGraphics.Opacity = 1;
         }
         void DisappearImg1()
         {
             P1CardLeaveAnimation.Begin();
+
+            //P1CardGraphics.Visibility = Visibility.Collapsed; //does not give enough time to complete animation before collapsing
+            //P1CardGraphics.Opacity = 1;
         }
 
         void AppearImg2(int number, string colour)
         {
+            P2CardGraphics.Visibility = Visibility.Visible;
             SetImg2(number, colour);
             P2CardArriveAnimation.Begin();
+            
+            P2CardGraphics.Opacity = 1;
         }
         void DisappearImg2()
         {
             P2CardLeaveAnimation.Begin();
+
+            //P2CardGraphics.Visibility = Visibility.Collapsed; //does not give enough time to complete animation before collapsing
+            //P2CardGraphics.Opacity = 1;
         }
 
-        
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    AppearImg2(7, "Red");
+        //    DisappearImg1();
+        //}
+
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    AppearImg1(2, "Yellow");
+        //    DisappearImg2();
+        //}
+
+        void DoArrowToRight()
+        {
+            Arrow.Source = new BitmapImage(new Uri("ms-appx:///Images/RightArrow.png"));
+            RightArrow.Begin();
+        }
+        void DoArrowToLeft()
+        {
+            Arrow.Source = new BitmapImage(new Uri("ms-appx:///Images/LeftArrow.png"));
+            LeftArrow.Begin();
+        }
     }
 }

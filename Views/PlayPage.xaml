@@ -8,39 +8,23 @@
     mc:Ignorable="d">
     <Page.Resources>
         <Storyboard x:Name="P1CardArriveAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImage" Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardGraphics" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImageNumber" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardImageNumber" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P1CardGraphics" Storyboard.TargetProperty="(UIElement.Opacity)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Name="P2CardArriveAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImageNumber" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImageNumber" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardGraphics" Storyboard.TargetProperty="(UIElement.Opacity)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardGraphics" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="P2CardImage" Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Name="P1CardLeaveAnimation">
@@ -63,10 +47,76 @@
                 <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Name="RightArrow">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame x:Name="easingDoubleKeyFrame" KeyTime="00:00:00" Value="-100"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="100"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="LeftArrow">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="76"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-76"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+
+            <Grid x:Name="P1CardGraphics" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                <Image x:Name="P1CardImage" HorizontalAlignment="Left" Height="172" Margin="40,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <CompositeTransform/>
+                    </Image.RenderTransform>
+                </Image>
+                <TextBlock x:Name="P1CardImageNumber" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+
+            <Grid x:Name="P2CardGraphics" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                <Image x:Name="P2CardImage" HorizontalAlignment="Left" Height="172" Margin="390,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <CompositeTransform/>
+                    </Image.RenderTransform>
+                </Image>
+                <TextBlock x:Name="P2CardImageNumber" HorizontalAlignment="Left" Margin="390,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+
+            <Image x:Name="Arrow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="214,273.5,0,0" Height="75" Width="98" Source="/Images/LeftArrow.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+            </Image>
+
+
+
+
 
             <Grid x:Name="P1">
                 <TextBlock x:Name="P1Title" HorizontalAlignment="Left" Margin="50,15,0,0" Text="Player 1:" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
@@ -108,44 +158,9 @@
                     <TextBlock x:Name="GameWinner" HorizontalAlignment="Left" Margin="525,78,0,0" Text="Game Winner:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="24"/>
                     <Button x:Name="PlayAgain" Content="Play Again" Margin="525,101,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="12" Click="PlayAgain_Click"/>
                     <TextBlock x:Name="GameWinnerCardsHeader" HorizontalAlignment="Left" Margin="525,135,0,0" Text="Game Winner's Cards:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Width="200" Height="24"/>
-                    <TextBlock x:Name="GameWinnerCards" HorizontalAlignment="Left" Margin="525,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Width="200" Height="506"/>
+                    <TextBlock x:Name="GameWinnerCards" HorizontalAlignment="Left" Margin="525,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Width="176" Height="200"/>
                 </Grid>
             </Grid>
-
-
-            <Grid x:Name="P1CardGraphics" RenderTransformOrigin="0.5,0.5">
-                <Grid.RenderTransform>
-                    <CompositeTransform/>
-                </Grid.RenderTransform>
-                <Image x:Name="P1CardImage" HorizontalAlignment="Left" Height="172" Margin="40,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-                    <Image.RenderTransform>
-                        <CompositeTransform/>
-                    </Image.RenderTransform>
-                </Image>
-                <TextBlock x:Name="P1CardImageNumber" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100" RenderTransformOrigin="0.5,0.5">
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-            </Grid>
-
-            <Grid x:Name="P2CardGraphics" RenderTransformOrigin="0.5,0.5">
-                <Grid.RenderTransform>
-                    <CompositeTransform/>
-                </Grid.RenderTransform>
-                <Image x:Name="P2CardImage" HorizontalAlignment="Left" Height="172" Margin="390,225,0,0" VerticalAlignment="Top" Width="100" Source="/Images/Grey-Background.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-                    <Image.RenderTransform>
-                        <CompositeTransform/>
-                    </Image.RenderTransform>
-                </Image>
-                <TextBlock x:Name="P2CardImageNumber" HorizontalAlignment="Left" Margin="390,268,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="65" TextAlignment="Center" Width="100" RenderTransformOrigin="0.5,0.5">
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-            </Grid>
-
-
 
 
 
