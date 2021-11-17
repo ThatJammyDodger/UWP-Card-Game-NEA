@@ -47,7 +47,7 @@ namespace Programming_Project
             {
                 Windows.Storage.StorageFile winners = await storageFolder.CreateFileAsync("winners.csv", Windows.Storage.CreationCollisionOption.FailIfExists); //fail if exists
 
-                await Windows.Storage.FileIO.WriteTextAsync(winners, "Simon Cowell,30\nDeveloper,26\nDr Who,16\nMr Benn,20\nMr Jenkins,16\n");
+                await Windows.Storage.FileIO.WriteTextAsync(winners, "Simon Cowell,30\nDeveloper,26\nDr Who,16\nMrs Brown,20\nMr Jenkins,16\n");
             }
             catch (Exception)
             {

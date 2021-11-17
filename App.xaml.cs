@@ -1,9 +1,9 @@
 ﻿using System;
-
 using Programming_Project.Services;
-
+using Windows.UI.Xaml.Controls;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
+
 
 namespace Programming_Project
 {
@@ -40,11 +40,22 @@ namespace Programming_Project
 
         private void OnAppUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
-            // TODO WTS: Please log and handle the exception as appropriate to your scenario
-            // For more info see https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.unhandledexception
+            Uhoh();
 
             Application.Current.Exit();
         }
+        public static async void Uhoh(string arg1 = "nobody cares", string arg2 = "except the sad person who just lost all progress on a sad card game lol.")
+        {
+            ContentDialog ERROR = new ContentDialog()
+            {
+                Title = "ERRORRRRRRRRRRRRRRRRR ARRGGHH",
+                Content = $"WE'RE ALL DOOMED!!\n\n Exception Details:\n{arg1} - {arg2}",
+                CloseButtonText = "yikes"
+            };
+
+            await ERROR.ShowAsync();
+        }
+
 
         private ActivationService CreateActivationService()
         {

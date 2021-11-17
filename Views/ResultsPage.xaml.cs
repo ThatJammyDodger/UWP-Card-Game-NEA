@@ -43,7 +43,7 @@ namespace Programming_Project.Views
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        output += $"{i + 1}) {names[i]} with a score of {scores[i]}.\n";
+                        output += $"\n{i + 1}) {names[i]} with a score of {scores[i]}.\n";
                     }
                     Test.Text = output;
                 }

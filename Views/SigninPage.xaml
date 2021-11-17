@@ -8,7 +8,9 @@
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}" >
+
+
 
             <Grid x:Name="Player1">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Player 1:" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="120" FontWeight="Bold" FontSize="18"/>
@@ -35,15 +37,30 @@
                 <TextBlock HorizontalAlignment="Left" Margin="10,450,0,0" Text="Player 2" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 <TextBox x:Name="P1Display" HorizontalAlignment="Left" Margin="95,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
                 <TextBox x:Name="P2Display" HorizontalAlignment="Left" Margin="95,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" PlaceholderText="Type here"/>
-                <Button x:Name="DisplaySubmit" Content="Submit" Margin="10,492,0,0" VerticalAlignment="Top" Width="84" Click="DisplaySubmit_Click"/>
+                <CheckBox x:Name="RememberButton" Content="Remember us on this device" Margin="10,480,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="DisplaySubmit" Content="Submit" Margin="10,516,0,0" VerticalAlignment="Top" Width="84" Click="DisplaySubmit_Click"/>
             </Grid>
 
             <Grid x:Name="Errors">
                 <TextBlock x:Name="P1Error" HorizontalAlignment="Left" Margin="104,138,0,0" Text="Login unsuccessful. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
                 <TextBlock x:Name="P2Error" HorizontalAlignment="Left" Margin="104,318,0,0" Text="Login unsuccessful. Try again" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
-                <TextBlock x:Name="DisplayError" HorizontalAlignment="Left" Margin="104,498,0,0" Text="Error. They must not be the same, blank, or longer than 8 characters." TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
+                <TextBlock x:Name="DisplayError" HorizontalAlignment="Left" Margin="104,549,0,0" Text="Error. They must not be the same, blank, or longer than 8 characters." TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Foreground="Red"/>
             </Grid>
-            <TextBlock x:Name="SuccessMsg" HorizontalAlignment="Left" Margin="105,494,0,0" Text="Login Successful!" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF13A103" Height="30" TextAlignment="Center"/>
+
+            <Grid x:Name="SuccessMsgGrid">
+                <TextBlock x:Name="SuccessMsg" Margin="105,516,0,0" Text="Login Successful!" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF13A103" Height="30" TextAlignment="Center"/>
+                <Button x:Name="GoToPlayPage" Content="Play" Margin="105,556,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="GoToPlayPage_Click" RenderTransformOrigin="0.6,0.361"/>
+            </Grid>
+            <Button x:Name="Logout" Content="Logout" Margin="10,556,0,0" VerticalAlignment="Top" Width="84" Click="Logout_Click" FontWeight="Bold"/>
+
+            <Grid x:Name="LoggedInInfo">
+                <TextBlock x:Name="LoggedInInfoHeader" HorizontalAlignment="Left" Margin="310,45,0,0" TextWrapping="Wrap" Text="Logged in info:" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBlock x:Name="LoggedInInfoP1" HorizontalAlignment="Left" Margin="310,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                <TextBlock x:Name="LoggedInInfoP2" HorizontalAlignment="Left" Margin="310,105,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            </Grid>
+
+
+
 
         </Grid>
     </Grid>

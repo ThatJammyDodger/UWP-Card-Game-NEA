@@ -3,15 +3,37 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Programming_Project.Views
 {
     public sealed partial class SigninPage : Page, INotifyPropertyChanged
     {
+        string check = "";
         public SigninPage()
         {
             InitializeComponent();
 
+            //Task t1 = Task.Run(() =>
+            //{
+            //    login.StayLoggedInChecked("a", "azerty");
+            //});
+
+            if ((!login.PlayersLoggedIn)&&(login.ProgrammeIsNew))
+            {
+                check = login.CheckStayLoggedIn();
+            } else { login.ProgrammeIsNew = false; }
+
+            //foreach (var x in login.displayNames)
+            //{
+            //    P1Username.Text += $"{x}\t";
+            //}
+
+            if (check == "true")
+            {
+                login.PlayersLoggedIn = true;
+            }
 
             P1Error.Visibility = Visibility.Collapsed;
             P2Error.Visibility = Visibility.Collapsed;
@@ -22,9 +44,12 @@ namespace Programming_Project.Views
                 Player1.Visibility = Visibility.Visible;
                 Player2.Visibility = Visibility.Collapsed;
                 Display.Visibility = Visibility.Collapsed;
-                SuccessMsg.Visibility = Visibility.Collapsed;
-                
+                SuccessMsgGrid.Visibility = Visibility.Collapsed;
 
+                Logout.Visibility = Visibility.Collapsed;
+
+                LoggedInInfo.Visibility = Visibility.Collapsed;
+                
             } else if (login.PlayersLoggedIn)
             {
                 P1Submit.IsEnabled = false;
@@ -39,7 +64,13 @@ namespace Programming_Project.Views
                 P1Display.IsEnabled = false;
                 P2Display.IsEnabled = false;
 
-                SuccessMsg.Visibility = Visibility.Visible;
+                RememberButton.IsEnabled = false;
+
+                SuccessMsgGrid.Visibility = Visibility.Visible;
+                Logout.Visibility = Visibility.Visible;
+
+                SetLoggedInInfo();
+
             }
         }
 
@@ -103,8 +134,9 @@ namespace Programming_Project.Views
             DisplaySubmit.IsEnabled = false;
             P1Display.IsEnabled = false;
             P2Display.IsEnabled = false;
+            RememberButton.IsEnabled = false;
 
-            if (P1Display.Text == "" || P2Display.Text == ""|| P1Display.Text== P2Display.Text || P1Display.Text.Length>8 || P2Display.Text.Length>8)
+            if (P1Display.Text == "" || P2Display.Text == "" || P1Display.Text == P2Display.Text || P1Display.Text.Length > 8 || P2Display.Text.Length > 8)
             {
                 DisplayError.Visibility = Visibility.Visible;
                 DisplaySubmit.IsEnabled = true;
@@ -117,8 +149,41 @@ namespace Programming_Project.Views
                 login.displayNames[0] = P1Display.Text;
                 login.displayNames[1] = P2Display.Text;
 
-                SuccessMsg.Visibility = Visibility.Visible;
+                SuccessMsgGrid.Visibility = Visibility.Visible;
+                Logout.Visibility = Visibility.Visible;
+
+                if((bool)RememberButton.IsChecked) { login.StayLoggedInChecked(P1Display.Text, P2Display.Text); } else { login.StayLoggedInUnchecked(); }
+
+                SetLoggedInInfo();
             }
+        }
+
+        private void GoToPlayPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PlayPage));
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            login.PlayersLoggedIn = false;
+            Task t1 = Task.Run(() =>
+            {
+                login.StayLoggedInUnchecked();
+            });
+            t1.Wait();
+            //Thread.Sleep(100);
+            check = "false";
+            login.PlayersLoggedIn = false;
+            LoggedInInfo.Visibility = Visibility.Collapsed;
+            this.Frame.Navigate(typeof(SigninPage));
+
+        }
+
+        private void SetLoggedInInfo()
+        {
+            LoggedInInfo.Visibility = Visibility.Visible;
+            LoggedInInfoP1.Text = $"Player 1: {login.displayNames[0]}";
+            LoggedInInfoP2.Text = $"Player 2: {login.displayNames[1]}";
         }
     }
 }

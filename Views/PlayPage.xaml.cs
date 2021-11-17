@@ -14,7 +14,7 @@ namespace Programming_Project.Views
         {
             InitializeComponent();
             Arrow.Opacity = 0;
-
+            
             if (!login.PlayersLoggedIn)
             {
                 DisableContent.Visibility = Visibility.Visible;
@@ -97,7 +97,12 @@ namespace Programming_Project.Views
         private void P1DrawCard_Click(object sender, RoutedEventArgs e)
         {
             DisappearImg1();
-            DisappearImg2();
+
+            if (cards.Deck.Count != 30)
+            {
+                DisappearImg2();
+            }
+                
 
             P1Drawn.Text = "";
             P2Drawn.Text = "";
@@ -189,8 +194,6 @@ namespace Programming_Project.Views
         private void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
             cards.reset();
-            cards.setDeck();
-            cards.shuffleDeck();
             UpdateStats();
 
             cards.GameInProgress = true;
