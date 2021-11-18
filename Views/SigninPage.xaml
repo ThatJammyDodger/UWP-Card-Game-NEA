@@ -1,15 +1,15 @@
 ﻿<Page
-    x:Class="Programming_Project.Views.SigninPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    x:Class="Programming_Project.Views.SigninPage"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}" >
-
 
 
             <Grid x:Name="Player1">
@@ -49,15 +49,23 @@
 
             <Grid x:Name="SuccessMsgGrid">
                 <TextBlock x:Name="SuccessMsg" Margin="105,516,0,0" Text="Login Successful!" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="#FF13A103" Height="30" TextAlignment="Center"/>
-                <Button x:Name="GoToPlayPage" Content="Play" Margin="105,556,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="GoToPlayPage_Click" RenderTransformOrigin="0.6,0.361"/>
+                <Button x:Name="GoToPlayPage" Content="Play" Margin="110,556,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="GoToPlayPage_Click" RenderTransformOrigin="0.6,0.361" Width="45"/>
+                <Button x:Name="InfoButton" Margin="170,554,0,0" VerticalAlignment="Top" Click="InfoButton_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE946;"/>
+                    </Button.Content>
+                </Button>
+                <!--<FontIcon Glyph="&#xE946;" FontFamily="{StaticResource SymbolThemeFontFamily}" />-->
             </Grid>
-            <Button x:Name="Logout" Content="Logout" Margin="10,556,0,0" VerticalAlignment="Top" Width="84" Click="Logout_Click" FontWeight="Bold"/>
+
+            <Button x:Name="Logout" Content="Logout" Margin="10,556,0,0" VerticalAlignment="Top" Width="85" Click="Logout_Click" FontWeight="Bold"/>
 
             <Grid x:Name="LoggedInInfo">
                 <TextBlock x:Name="LoggedInInfoHeader" HorizontalAlignment="Left" Margin="310,45,0,0" TextWrapping="Wrap" Text="Logged in info:" VerticalAlignment="Top" FontWeight="Bold"/>
                 <TextBlock x:Name="LoggedInInfoP1" HorizontalAlignment="Left" Margin="310,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
                 <TextBlock x:Name="LoggedInInfoP2" HorizontalAlignment="Left" Margin="310,105,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
             </Grid>
+
 
 
 

@@ -15,6 +15,7 @@ namespace Programming_Project.Views
         {
             InitializeComponent();
 
+
             //Task t1 = Task.Run(() =>
             //{
             //    login.StayLoggedInChecked("a", "azerty");
@@ -184,6 +185,23 @@ namespace Programming_Project.Views
             LoggedInInfo.Visibility = Visibility.Visible;
             LoggedInInfoP1.Text = $"Player 1: {login.displayNames[0]}";
             LoggedInInfoP2.Text = $"Player 2: {login.displayNames[1]}";
+        }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowInfoDialogue();
+        }
+
+        async void ShowInfoDialogue()
+        {
+            ContentDialog InfoDialogue = new ContentDialog()
+            {
+                Title = "How To Play?",
+                Content = "Now that you have logged in, you can go to the 'Play' tab to play the game proper.\n\nAfter that, Player 1 starts by clicking 'Draw Card' underneath their name. Their randomly assigned card should then popout underneath.\n\nThe same then happens for Player 2.\n\nEach round, the blue arrow points towards the player who has won the round. All info is displayed as text just above too.\n\nThis then repeats until the end of the game, when the overall winner (with the most cards) will be indicated.\n\nThe results tab displays the players who have won their game with the most cards of all-time (on this device). Try and get yourself onto this leaderboard!\n\n I hope you really like the game and have fun!",
+                CloseButtonText = "Ok"
+            };
+
+            await InfoDialogue.ShowAsync();
         }
     }
 }
