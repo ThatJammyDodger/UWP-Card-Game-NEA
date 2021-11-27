@@ -14,7 +14,7 @@ namespace Programming_Project.Views
         public SigninPage()
         {
             InitializeComponent();
-
+            RememberButton.IsChecked = false;
 
             //Task t1 = Task.Run(() =>
             //{
@@ -34,6 +34,14 @@ namespace Programming_Project.Views
             if (check == "true")
             {
                 login.PlayersLoggedIn = true;
+            }
+
+            if (login.StayingLoggedIn == 1)
+            {
+                RememberButton.IsChecked = true;
+            } else if (login.StayingLoggedIn == 0)
+            {
+                RememberButton.IsChecked= false;
             }
 
             P1Error.Visibility = Visibility.Collapsed;
@@ -167,6 +175,7 @@ namespace Programming_Project.Views
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             login.PlayersLoggedIn = false;
+            login.StayingLoggedIn = 0;
             Task t1 = Task.Run(() =>
             {
                 login.StayLoggedInUnchecked();
@@ -197,7 +206,7 @@ namespace Programming_Project.Views
             ContentDialog InfoDialogue = new ContentDialog()
             {
                 Title = "How To Play?",
-                Content = "Now that you have logged in, you can go to the 'Play' tab to play the game proper.\n\nAfter that, Player 1 starts by clicking 'Draw Card' underneath their name. Their randomly assigned card should then popout underneath.\n\nThe same then happens for Player 2.\n\nEach round, the blue arrow points towards the player who has won the round. All info is displayed as text just above too.\n\nThis then repeats until the end of the game, when the overall winner (with the most cards) will be indicated.\n\nThe results tab displays the players who have won their game with the most cards of all-time (on this device). Try and get yourself onto this leaderboard!\n\n I hope you really like the game and have fun!",
+                Content = "Now that you have logged in, you can go to the 'Play' tab to play the game proper.\n\nAfter that, Player 1 starts by clicking 'Draw Card' underneath their name. Their randomly assigned card should then popout underneath.\n\nThe same then happens for Player 2.\n\nEach round, the blue arrow points towards the player who has won the round. All info is displayed as text just above too.\n\nNote: Higher number cards beat smaller number cards. If numbers are the same - Red beats Black; Yellow beats Red; Black beats Yellow.\n\nThis then repeats until the end of the game, when the overall winner (with the most cards) will be indicated.\n\nThe results tab displays the players who have won their game with the most cards of all-time (on this device). Try and get yourself onto this leaderboard!\n\n I hope you really like the game and have fun!",
                 CloseButtonText = "Ok"
             };
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/pages/settings-codebehind.md
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -13,8 +14,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Programming_Project.Views
 {
-    // TODO WTS: Add other settings as necessary. For help see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/pages/settings-codebehind.md
-    // TODO WTS: Change the URL for your privacy policy in the Resource File, currently set to https://YourPrivacyUrlGoesHere
     public sealed partial class SettingsPage : Page, INotifyPropertyChanged
     {
         private ElementTheme _elementTheme = ThemeSelectorService.Theme;

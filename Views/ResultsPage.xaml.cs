@@ -48,46 +48,6 @@ namespace Programming_Project.Views
                     Test.Text = output;
                 }
             }
-
-            /*void updateText(string string1, ref string string2)
-            {
-                while (true)
-                {
-                    string2 = string1;
-                }
-            }*/
-
-            //using (var reader = new StreamWriter(@"winners.csv"))
-            //{
-            //    reader.WriteLine("Simon Cowell,30");
-            //    reader.WriteLine("Dev,26");
-            //    reader.WriteLine("Dr Who,16");
-            //    reader.WriteLine("Mr Bean,20");
-            //    reader.WriteLine("Dev's friend,16");
-            //}
-
-
-            //using (var reader = File.AppendText(@"winners.csv"))
-            //{
-            //    reader.WriteLine($"{players[finalWinner - 1]},{WinnerNoOfCards}");
-            //}
-
-
-            //using (var reader = new StreamReader(@"winners.csv"))
-            //{
-            //    while (!reader.EndOfStream)
-            //    {
-            //        var line = reader.ReadLine();
-            //        var values = line.Split(',');
-            //        int value;
-            //        int.TryParse(values[1], out value);
-            //        names.Add(values[0]);
-            //        scores.Add(value);
-            //    }
-            //}
-
-            // Create sample file; replace if exists.
-
         }
 
         

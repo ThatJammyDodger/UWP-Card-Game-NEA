@@ -16,6 +16,7 @@ namespace Programming_Project
         static public string[] displayNames = new string[2];
         static public string FileValue = "";
         static public bool ProgrammeIsNew = true;
+        static public int StayingLoggedIn = -1;
 
         //METHODS
         static public bool auth(string enteredUsername, string enteredPassword)
@@ -52,6 +53,7 @@ namespace Programming_Project
                 await Windows.Storage.FileIO.WriteTextAsync(LoggedIn, $"true\n{username1}\n{username2}");
             });
             t2.Wait();
+            StayingLoggedIn = 1;
         }
         static public async void StayLoggedInUnchecked()
         {
@@ -67,6 +69,7 @@ namespace Programming_Project
                 await Windows.Storage.FileIO.WriteTextAsync(LoggedIn, $"false");
             });
             t2.Wait();
+            StayingLoggedIn = 0;
         }
         static public string CheckStayLoggedIn()
         {
@@ -82,9 +85,11 @@ namespace Programming_Project
                 PlayersLoggedIn = true;
                 displayNames[0] = temp[1];
                 displayNames[1] = temp[2];
+                StayingLoggedIn = 1;
             } else if (temp[0] == "false")
             {
                 PlayersLoggedIn = false;
+                StayingLoggedIn = 0;
             }
             return temp[0];
         }
