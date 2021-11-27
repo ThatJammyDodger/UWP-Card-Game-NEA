@@ -9,8 +9,6 @@ namespace Programming_Project
     static class cards
     {
         //PROPERTIES
-
-
         static Random rnd = new Random();
         public static bool GameInProgress = false;
         public static List<string> Player1Cards = new List<string>();
