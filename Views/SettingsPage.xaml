@@ -39,7 +39,7 @@
                             <xaml:ElementTheme>Dark</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
                     </RadioButton>
-                    <RadioButton 
+                    <!--<RadioButton 
                         x:Uid="Settings_Theme_Default"
                         Checked="ThemeChanged_CheckedAsync"
                         IsChecked="{x:Bind ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
@@ -48,7 +48,7 @@
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Default</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
-                    </RadioButton>
+                    </RadioButton>-->
                 </StackPanel>
             </StackPanel>
 

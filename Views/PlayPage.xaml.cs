@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Threading.Tasks;
 
 
 namespace Programming_Project.Views
@@ -59,6 +60,7 @@ namespace Programming_Project.Views
                     GameOverMenu.Visibility = Visibility.Collapsed;
                     if (cards.PlayerTurn == 1)
                     {
+                        Arrow.Source = new BitmapImage(new Uri("ms-appx:///Images/null.png"));
                         P1DrawCard.IsEnabled = true;
                         P2DrawCard.IsEnabled = false;
                         P1Drawn.Text = "";
@@ -101,6 +103,7 @@ namespace Programming_Project.Views
             if (cards.Deck.Count != 30)
             {
                 DisappearImg2();
+                ArrowOut.Begin();
             }
                 
 
@@ -123,6 +126,7 @@ namespace Programming_Project.Views
         private void P2DrawCard_Click(object sender, RoutedEventArgs e)
         {
             cards.player2card = cards.drawCard();
+
             AppearImg2(cards.findCardNumber(cards.player2card), cards.findCardColour(cards.player2card));
 
             int winner = cards.calculateWinner(cards.player1card, cards.player2card);
@@ -150,6 +154,7 @@ namespace Programming_Project.Views
             }
             cards.PlayerTurn = 1;
             UpdateStats();
+
             if (cards.Deck.Count == 0)
             {
                 cards.GameInProgress = false;
@@ -203,6 +208,7 @@ namespace Programming_Project.Views
 
             DisappearImg1();
             DisappearImg2();
+            ArrowOut.Begin();
 
             GameOverMenu.Visibility = Visibility.Collapsed;
         }
@@ -294,12 +300,12 @@ namespace Programming_Project.Views
         void DoArrowToRight()
         {
             Arrow.Source = new BitmapImage(new Uri("ms-appx:///Images/RightArrow.png"));
-            RightArrow.Begin();
+            RightArrowIn.Begin();
         }
         void DoArrowToLeft()
         {
             Arrow.Source = new BitmapImage(new Uri("ms-appx:///Images/LeftArrow.png"));
-            LeftArrow.Begin();
+            LeftArrowIn.Begin();
         }
     }
 }
